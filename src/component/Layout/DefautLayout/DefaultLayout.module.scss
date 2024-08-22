@@ -1,0 +1,16 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.container {
+    display: flex;
+    width: var(--default-layout-width);
+    margin-top: 60px;
+    max-width: 100%;
+    justify-content: space-between;
+    padding-right: 24px;
+    padding-left: 16px;
+}
+.content {
+    flex: 1;
+}
