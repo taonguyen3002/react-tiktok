@@ -16,7 +16,7 @@
 }
 .search {
     position: relative;
-    width: 500px;
+    width: var(--search-width);
     height: 46px;
     background-color: #f1f1f2;
     border-radius: var(--border-radius-header);
@@ -41,6 +41,16 @@
     }
     &:hover {
         border-color: #e0e0e0;
+    }
+    &-result {
+        padding-top: 8px;
+        width: var(--search-width);
+    }
+    &-title {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 22px;
+        padding: 13px 12px 8px;
     }
     &-btn {
         width: 52px;
