@@ -8,7 +8,15 @@
     --default-layout-header-height: 60px;
     --default-layout-width: 100vw;
 }
-
+button,
+input,
+textarea,
+select {
+    outline: none;
+    padding: 0;
+    background: none;
+    border: none;
+}
 html {
     font-size: 62.5%;
 }
