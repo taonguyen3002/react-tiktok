@@ -12,11 +12,11 @@ function AccountItem() {
                 className={cx('avatar')}
             />
             <div className={cx('info')}>
-                <p className={cx('username')}>
-                    <span>NguyenVanThien</span>
+                <p className={cx('name')}>
+                    <span>Nguyen Van Thien</span>
                     <FaCheckCircle className={cx('check')} />
                 </p>
-                <span className={cx('name')}>Nguyen Van Thien</span>
+                <span className={cx('username')}>NguyenVanThien</span>
             </div>
         </div>
     );

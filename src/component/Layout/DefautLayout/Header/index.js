@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
+import Tippy from '@tippyjs/react/headless';
 import style from './Header.module.scss';
 import classNames from 'classnames/bind';
 import { Wrapper as PopperWrapper } from '../../../Popper';
-import Tippy from '@tippyjs/react/headless';
 import { FaCircleXmark, FaMagnifyingGlass } from 'react-icons/fa6';
 import { BiLoaderCircle } from 'react-icons/bi';
+import { FiMoreVertical } from 'react-icons/fi';
 import image from '../../../../assets/image';
 import AccountItem from '../../../AccountItem';
+import Button from '../../../Button';
 
 function Header() {
     const cx = classNames.bind(style);
@@ -70,7 +72,12 @@ function Header() {
                     </div>
                 </Tippy>
 
-                <div className={cx('action')}></div>
+                <div className={cx('action')}>
+                    <Button primary>Log in</Button>
+                    <Button className={cx('more')}>
+                        <FiMoreVertical />
+                    </Button>
+                </div>
             </div>
         </header>
     );
