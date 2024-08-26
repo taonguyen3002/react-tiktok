@@ -20,9 +20,9 @@ select {
 }
 html {
     font-size: 62.5%;
-    color: var(--text-color);
 }
 * {
+    color: var(--text-color);
     margin: 0;
     padding: 0;
     box-sizing: border-box;
