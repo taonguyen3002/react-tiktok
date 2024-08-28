@@ -12,6 +12,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    .action-btn {
+        font-size: 2.2rem;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        width: 32px;
+        padding: 0;
+        cursor: pointer;
+    }
 }
 .inner {
     height: 100%;
@@ -104,4 +113,18 @@
     min-width: 40px;
     font-size: 2rem;
     padding: 9px;
+}
+.upload-btn {
+    border-color: rgba(22, 24, 35, 0.12);
+    height: 36px;
+    font-size: 1.6rem;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 999px;
+    margin-left: 12px;
+    cursor: pointer;
 }

@@ -21,20 +21,31 @@ select {
 html {
     font-size: 62.5%;
 }
-* {
-    color: var(--text-color);
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizespeed;
-}
-a[href] {
-    text-decoration: none;
     color: var(--text-color);
+    .tippy-content {
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1.6rem;
+        line-height: 2.1rem;
+        background-color: rgba(84, 84, 84, 0.92);
+    }
+    .tippy-arrow {
+        color: rgba(84, 84, 84, 0.92);
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a[href] {
+    color: var(--text-color);
+    text-decoration: none;
 }

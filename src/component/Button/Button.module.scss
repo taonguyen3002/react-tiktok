@@ -9,6 +9,7 @@
     border-radius: 4px;
     border: 1px solid transparent;
     user-select: none;
+    color: var(--text-color);
     + .wrapper {
         margin-left: 10px;
     }
@@ -54,7 +55,7 @@
 }
 .small {
     padding: 4px 16px;
-    min-width: 88px;
+    min-width: 32px;
 }
 .large {
     padding: 14px 16px;
