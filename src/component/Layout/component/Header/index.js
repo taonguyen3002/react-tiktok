@@ -5,21 +5,12 @@ import style from './Header.module.scss';
 import 'tippy.js/dist/tippy.css';
 import classNames from 'classnames/bind';
 
-import {
-    FaCircleXmark,
-    FaMagnifyingGlass,
-    FaLanguage,
-    FaRegLightbulb,
-    FaMessage,
-    FaPlus,
-    FaRegUser,
-} from 'react-icons/fa6';
+import { FaCircleXmark, FaMagnifyingGlass, FaLanguage, FaRegLightbulb, FaRegUser } from 'react-icons/fa6';
 import { BiLoaderCircle } from 'react-icons/bi';
 import { TbHomeEdit } from 'react-icons/tb';
 import { FiLogOut, FiMoreVertical } from 'react-icons/fi';
 import { MdFeedback } from 'react-icons/md';
 import { CiDark } from 'react-icons/ci';
-import { FaTelegramPlane } from 'react-icons/fa';
 
 import { Wrapper as PopperWrapper } from '../../../Popper';
 import image from '../../../../assets/image';
@@ -27,7 +18,8 @@ import AccountItem from '../../../AccountItem';
 import Button from '../../../Button';
 import Menu from '../../../Popper/Menu';
 import { IoSettingsOutline } from 'react-icons/io5';
-
+import { IconInbox, IconMessage, IconPlus } from '../../../Icons';
+import Image from '../../../Images';
 const MENU_ITEMS = [
     {
         icon: <TbHomeEdit />,
@@ -123,25 +115,15 @@ function Header() {
             <div className={cx('inner')}>
                 <img src={image.logo.default} alt="tiktok" />
                 <TippyHeadless
-                    popperOptions={{
-                        modifiers: [
-                            {
-                                name: 'offset',
-                                options: {
-                                    offset: [0, 0],
-                                },
-                            },
-                        ],
-                    }}
                     visible={searchResult}
                     interactive
                     render={(attrs) => (
                         <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                             <PopperWrapper>
                                 <h3 className={cx('search-title')}>Account list</h3>
-                                <ul className={cx('search-list')}>
+                                <div className={cx('search-list')}>
                                     <AccountItem />
-                                </ul>
+                                </div>
                             </PopperWrapper>
                         </div>
                     )}
@@ -161,20 +143,24 @@ function Header() {
                 <div className={cx('action')}>
                     {currentuser ? (
                         <Fragment>
-                            <Button leftIcon={<FaPlus />} to={'/upload'} className={cx('upload-btn')}>
+                            <Button
+                                leftIcon={<IconPlus className={cx('upload-icon')} />}
+                                to={'/upload'}
+                                className={cx('upload-btn')}
+                            >
                                 Upload
                             </Button>
 
                             <Tippy content="Messages" delay={[0, 200]}>
-                                <span>
+                                <Fragment>
                                     <Button size={'small'} to={'/message'} className={cx('action-btn')}>
-                                        <FaTelegramPlane />
+                                        <IconMessage />
                                     </Button>
-                                </span>
+                                </Fragment>
                             </Tippy>
 
                             <Button size={'small'} className={cx('action-btn')}>
-                                <FaMessage />
+                                <IconInbox />
                             </Button>
                         </Fragment>
                     ) : (
@@ -182,7 +168,7 @@ function Header() {
                     )}
                     <Menu items={currentuser ? userMenu : MENU_ITEMS} onChange={handdleMenuChange}>
                         {currentuser ? (
-                            <img
+                            <Image
                                 src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/5a02f274d0d4025e46ec4fa6b63291d2~c5_1080x1080.jpeg?lk3s=a5d48078&nonce=70722&refresh_token=534cc74f38e9e88712b5b49b69f33bfd&x-expires=1724893200&x-signature=04EWne18F2rOSjBhLCy7inYlzbU%3D&shp=a5d48078&shcp=81f88b70"
                                 alt="nguyen van A"
                                 className={cx('avatar')}

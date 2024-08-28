@@ -1,4 +1,5 @@
 .wrapper {
+    font-family: TikTokFont, sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,7 +24,7 @@
     margin-left: 8px;
 }
 .icon {
-    display: inline-block;
+    display: inline-flex;
     font-size: 2rem;
 }
 .rounded {
