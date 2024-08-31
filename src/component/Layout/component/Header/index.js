@@ -1,25 +1,25 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment } from 'react';
 import Tippy from '@tippyjs/react';
-import TippyHeadless from '@tippyjs/react/headless';
 import style from './Header.module.scss';
 import 'tippy.js/dist/tippy.css';
 import classNames from 'classnames/bind';
 
-import { FaCircleXmark, FaMagnifyingGlass, FaLanguage, FaRegLightbulb, FaRegUser } from 'react-icons/fa6';
-import { BiLoaderCircle } from 'react-icons/bi';
+import { FaLanguage, FaRegLightbulb, FaRegUser } from 'react-icons/fa6';
 import { TbHomeEdit } from 'react-icons/tb';
 import { FiLogOut, FiMoreVertical } from 'react-icons/fi';
 import { MdFeedback } from 'react-icons/md';
 import { CiDark } from 'react-icons/ci';
 
-import { Wrapper as PopperWrapper } from '../../../Popper';
+import Search from '../Search';
 import image from '../../../../assets/image';
-import AccountItem from '../../../AccountItem';
 import Button from '../../../Button';
 import Menu from '../../../Popper/Menu';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { IconInbox, IconMessage, IconPlus } from '../../../Icons';
 import Image from '../../../Images';
+
+const cx = classNames.bind(style);
+
 const MENU_ITEMS = [
     {
         icon: <TbHomeEdit />,
@@ -103,43 +103,11 @@ function Header() {
             separate: true,
         },
     ];
-    const cx = classNames.bind(style);
-    const [searchResult, setSearchResult] = useState([]);
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([]);
-        }, 3000);
-    }, []);
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <img src={image.logo.default} alt="tiktok" />
-                <TippyHeadless
-                    visible={searchResult}
-                    interactive
-                    render={(attrs) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <PopperWrapper>
-                                <h3 className={cx('search-title')}>Account list</h3>
-                                <div className={cx('search-list')}>
-                                    <AccountItem />
-                                </div>
-                            </PopperWrapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input placeholder="Search" spellCheck={false} className={cx('search-input')} />
-
-                        <button className={cx('search-clear')}>
-                            <FaCircleXmark />
-                        </button>
-                        <BiLoaderCircle className={cx('search-loading')} />
-                        <button className={cx('search-btn')}>
-                            <FaMagnifyingGlass />
-                        </button>
-                    </div>
-                </TippyHeadless>
+                <Image src={image.logo.default} alt="tiktok" />
+                <Search />
                 <div className={cx('action')}>
                     {currentuser ? (
                         <Fragment>
