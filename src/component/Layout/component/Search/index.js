@@ -4,7 +4,7 @@ import styles from './Search.module.scss';
 import Tippy from '@tippyjs/react/headless';
 import { FaCircleXmark, FaMagnifyingGlass } from 'react-icons/fa6';
 import { BiLoaderCircle } from 'react-icons/bi';
-
+import { useDebounce } from '../../../../hooks';
 import AccountItem from '../../../AccountItem';
 import { Wrapper as PopperWrapper } from '../../../Popper';
 
@@ -16,15 +16,16 @@ function Search() {
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
 
+    const debounce = useDebounce(searchValue, 400);
     const inputRef = useRef();
 
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!debounce.trim()) {
             setSearchResult([]);
             return;
         }
         setLoading(true);
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounce)}&type=less`)
             .then((res) => res.json())
             .then((res) => {
                 setSearchResult(res.data);
@@ -34,7 +35,7 @@ function Search() {
             .catch(() => {
                 setLoading(false);
             });
-    }, [searchValue]);
+    }, [debounce]);
 
     const handleClearBtn = () => {
         setSearchValue('');
@@ -71,7 +72,9 @@ function Search() {
                         spellCheck={false}
                         className={cx('search-input')}
                         onChange={(e) => {
-                            setSearchValue(e.target.value);
+                            if (!e.target.value.startsWith(' ')) {
+                                setSearchValue(e.target.value);
+                            }
                         }}
                         onFocus={() => setShowResult(true)}
                     />
