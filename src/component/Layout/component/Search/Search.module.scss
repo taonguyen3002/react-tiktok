@@ -71,9 +71,20 @@
     &-loading {
         position: absolute;
         top: 50%;
-        translate: 0 -50%;
+        transform: translateY(-50%);
         right: calc(52px + 16px);
         font-size: 1.6rem;
         color: rgba(22, 24, 35, 0.34);
+    }
+    &-loading {
+        animation: spiner 0.8s linear infinite;
+    }
+}
+@keyframes spiner {
+    from {
+        transform: translateY(-50%) rotate(0);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
     }
 }

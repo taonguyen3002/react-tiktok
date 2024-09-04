@@ -14,14 +14,27 @@ function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const inputRef = useRef();
 
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1, 2, 3]);
-        }, 0);
-    }, []);
+        if (!searchValue.trim()) {
+            setSearchResult([]);
+            return;
+        }
+        setLoading(true);
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+            .then((res) => res.json())
+            .then((res) => {
+                setSearchResult(res.data);
+
+                setLoading(false);
+            })
+            .catch(() => {
+                setLoading(false);
+            });
+    }, [searchValue]);
 
     const handleClearBtn = () => {
         setSearchValue('');
@@ -41,7 +54,9 @@ function Search() {
                         <PopperWrapper>
                             <h3 className={cx('search-title')}>Account</h3>
                             <div className={cx('search-list')}>
-                                <AccountItem />
+                                {searchResult.map((data) => (
+                                    <AccountItem key={data.id} data={data} />
+                                ))}
                             </div>
                         </PopperWrapper>
                     </div>
@@ -60,12 +75,12 @@ function Search() {
                         }}
                         onFocus={() => setShowResult(true)}
                     />
-                    {!!searchValue && (
+                    {!!searchValue && !loading && (
                         <button className={cx('search-clear')} onClick={handleClearBtn}>
                             <FaCircleXmark />
                         </button>
                     )}
-                    {/* <BiLoaderCircle className={cx('search-loading')} /> */}
+                    {loading && <BiLoaderCircle className={cx('search-loading')} />}
                     <button className={cx('search-btn')}>
                         <FaMagnifyingGlass />
                     </button>
