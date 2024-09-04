@@ -2,6 +2,8 @@ import { Fragment, useEffect, useState, useRef } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import Tippy from '@tippyjs/react/headless';
+
+import * as searchSevice from '../../../../apiSevices/searchSevice';
 import { FaCircleXmark, FaMagnifyingGlass } from 'react-icons/fa6';
 import { BiLoaderCircle } from 'react-icons/bi';
 import { useDebounce } from '../../../../hooks';
@@ -25,16 +27,13 @@ function Search() {
             return;
         }
         setLoading(true);
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounce)}&type=less`)
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res.data);
-
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-            });
+        const fetchApi = async () => {
+            setLoading(true);
+            const result = await searchSevice.search(debounce);
+            setSearchResult(result);
+            setLoading(false);
+        };
+        fetchApi();
     }, [debounce]);
 
     const handleClearBtn = () => {
