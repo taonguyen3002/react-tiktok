@@ -7,11 +7,13 @@
     --default-layout-header-height: 60px;
     --default-layout-width: 100vw;
     --search-width: 500px;
+    --font-primary: TikTokFont, sans-serif;
 }
 button,
 input,
 textarea,
 select {
+    font-family: var(--font-primary);
     outline: none;
     padding: 0;
     background: none;
@@ -49,7 +51,7 @@ html {
 
 body {
     margin-top: 0;
-    font-family: TikTokFont;
+    font-family: var(--font-primary);
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizespeed;

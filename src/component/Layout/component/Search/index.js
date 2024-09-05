@@ -44,6 +44,13 @@ function Search() {
     const handleClickOutside = () => {
         setShowResult(false);
     };
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+        if (searchValue.startsWith(' ')) {
+            return;
+        }
+        setSearchValue(searchValue);
+    };
     return (
         <Fragment>
             <Tippy
@@ -70,11 +77,7 @@ function Search() {
                         placeholder="Search"
                         spellCheck={false}
                         className={cx('search-input')}
-                        onChange={(e) => {
-                            if (!e.target.value.startsWith(' ')) {
-                                setSearchValue(e.target.value);
-                            }
-                        }}
+                        onChange={handleChange}
                         onFocus={() => setShowResult(true)}
                     />
                     {!!searchValue && !loading && (
@@ -83,7 +86,7 @@ function Search() {
                         </button>
                     )}
                     {loading && <BiLoaderCircle className={cx('search-loading')} />}
-                    <button className={cx('search-btn')}>
+                    <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
                         <FaMagnifyingGlass />
                     </button>
                 </div>

@@ -17,6 +17,8 @@ import Menu from '../../../Popper/Menu';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { IconInbox, IconMessage, IconPlus } from '../../../Icons';
 import Image from '../../../Images';
+import { Link } from 'react-router-dom';
+import routesConfig from '../../../../config/routes';
 
 const cx = classNames.bind(style);
 
@@ -106,14 +108,16 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Image src={image.logo.default} alt="tiktok" />
+                <Link to={routesConfig.root} className={cx('logo')}>
+                    <Image src={image.logo.default} alt="tiktok" />
+                </Link>
                 <Search />
                 <div className={cx('action')}>
                     {currentuser ? (
                         <Fragment>
                             <Button
                                 leftIcon={<IconPlus className={cx('upload-icon')} />}
-                                to={'/upload'}
+                                to={routesConfig.upload}
                                 className={cx('upload-btn')}
                             >
                                 Upload
@@ -137,7 +141,7 @@ function Header() {
                     <Menu items={currentuser ? userMenu : MENU_ITEMS} onChange={handdleMenuChange}>
                         {currentuser ? (
                             <Image
-                                src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/5a02f274d0d4025e46ec4fa6b63291d2~c5_1080x1080.jpeg?lk3s=a5d48078&nonce=70722&refresh_token=534cc74f38e9e88712b5b49b69f33bfd&x-expires=1724893200&x-signature=04EWne18F2rOSjBhLCy7inYlzbU%3D&shp=a5d48078&shcp=81f88b70"
+                                src="https://cdn-media.sforum.vn/storage/app/media/wp-content/uploads/2023/11/avatar-vo-tri-thumbnail.jpg"
                                 alt="nguyen van A"
                                 className={cx('avatar')}
                             />
