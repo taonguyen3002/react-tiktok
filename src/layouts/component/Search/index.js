@@ -1,14 +1,14 @@
-import { Fragment, useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import Tippy from '@tippyjs/react/headless';
 
-import * as searchSevice from '../../../../apiSevices/searchSevice';
 import { FaCircleXmark, FaMagnifyingGlass } from 'react-icons/fa6';
 import { BiLoaderCircle } from 'react-icons/bi';
-import { useDebounce } from '../../../../hooks';
-import AccountItem from '../../../AccountItem';
-import { Wrapper as PopperWrapper } from '../../../Popper';
+import * as searchSevice from '../../../sevices/searchSevice';
+import { useDebounce } from '../../../hooks';
+import AccountItem from '../../../component/AccountItem';
+import { Wrapper as PopperWrapper } from '../../../component/Popper';
 
 const cx = classNames.bind(styles);
 

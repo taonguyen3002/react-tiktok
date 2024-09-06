@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import Tippy from '@tippyjs/react';
-import style from './Header.module.scss';
 import 'tippy.js/dist/tippy.css';
+import style from './Header.module.scss';
 import classNames from 'classnames/bind';
 
 import { FaLanguage, FaRegLightbulb, FaRegUser } from 'react-icons/fa6';
@@ -9,16 +9,16 @@ import { TbHomeEdit } from 'react-icons/tb';
 import { FiLogOut, FiMoreVertical } from 'react-icons/fi';
 import { MdFeedback } from 'react-icons/md';
 import { CiDark } from 'react-icons/ci';
-
-import Search from '../Search';
-import image from '../../../../assets/image';
-import Button from '../../../Button';
-import Menu from '../../../Popper/Menu';
 import { IoSettingsOutline } from 'react-icons/io5';
-import { IconInbox, IconMessage, IconPlus } from '../../../Icons';
-import Image from '../../../Images';
+
+import { IconInbox, IconMessage, IconPlus } from '../../../component/Icons';
+import Search from '../Search';
+import image from '../../../assets/image';
+import Button from '../../../component/Button';
+import Menu from '../../../component/Popper/Menu';
+import Image from '../../../component/Images';
 import { Link } from 'react-router-dom';
-import routesConfig from '../../../../config/routes';
+import configs from '../../../configs';
 
 const cx = classNames.bind(style);
 
@@ -108,32 +108,38 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={routesConfig.root} className={cx('logo')}>
+                <Link to={configs.routes.root} className={cx('logo')}>
                     <Image src={image.logo.default} alt="tiktok" />
                 </Link>
                 <Search />
                 <div className={cx('action')}>
                     {currentuser ? (
                         <Fragment>
-                            <Button
-                                leftIcon={<IconPlus className={cx('upload-icon')} />}
-                                to={routesConfig.upload}
-                                className={cx('upload-btn')}
-                            >
-                                Upload
-                            </Button>
+                            <div className={cx('action-btn__wrap')}>
+                                <Button
+                                    leftIcon={<IconPlus className={cx('upload-icon')} />}
+                                    to={configs.routes.upload}
+                                    className={cx('upload-btn')}
+                                >
+                                    Upload
+                                </Button>
+                            </div>
 
-                            <Tippy content="Messages" delay={[0, 200]}>
-                                <Fragment>
+                            <Tippy content="Messages">
+                                <div className={cx('action-btn__wrap')}>
                                     <Button size={'small'} to={'/message'} className={cx('action-btn')}>
                                         <IconMessage />
                                     </Button>
-                                </Fragment>
+                                </div>
                             </Tippy>
 
-                            <Button size={'small'} className={cx('action-btn')}>
-                                <IconInbox />
-                            </Button>
+                            <Tippy content="Thông báo">
+                                <div className={cx('action-btn__wrap')}>
+                                    <Button size={'small'} className={cx('action-btn')}>
+                                        <IconInbox />
+                                    </Button>
+                                </div>
+                            </Tippy>
                         </Fragment>
                     ) : (
                         <Button primary>Log in</Button>
