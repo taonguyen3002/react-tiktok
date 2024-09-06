@@ -5,9 +5,10 @@
 .container {
     display: flex;
     width: var(--default-layout-width);
+    margin-top: var(--header-height);
+    justify-content: space-between;
     margin-top: 60px;
     max-width: 100%;
-    justify-content: space-between;
     padding-right: 24px;
     padding-left: 16px;
 }

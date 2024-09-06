@@ -52,7 +52,9 @@ function Search() {
         setSearchValue(searchValue);
     };
     return (
-        <Fragment>
+        // Using a wrapper <div>  tag around the reference element solves
+        // this by creating a new parentNode context.
+        <div>
             <Tippy
                 visible={showResult && searchResult.length > 0}
                 interactive
@@ -91,7 +93,7 @@ function Search() {
                     </button>
                 </div>
             </Tippy>
-        </Fragment>
+        </div>
     );
 }
 
