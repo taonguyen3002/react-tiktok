@@ -11,6 +11,7 @@ import {
     IconRecord,
     iconActivePath,
 } from '../../../component/Icons';
+import SuggestAccount from '../../../component/SuggestAccounts/SuggestAccounts';
 
 function Sidebar() {
     const cx = classNames.bind(style);
@@ -76,6 +77,7 @@ function Sidebar() {
                     }
                 />
             </Menu>
+            <SuggestAccount label="Suggested for you" />
         </aside>
     );
 }
