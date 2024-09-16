@@ -1,0 +1,88 @@
+.inner {
+    position: relative;
+}
+.video {
+    background-color: black;
+    border-radius: 20px;
+
+    &-detail {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        color: #fcfcfc;
+    }
+    &-progress {
+        position: absolute;
+        bottom: 1px;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 8px;
+        width: 98%;
+        border-radius: 2px;
+        background: transparent;
+    }
+}
+.progress-fill {
+    position: relative;
+    background: #fcfcfc;
+    height: 100%;
+    &::before {
+        content: '';
+        width: 14px;
+        height: 14px;
+        border-radius: 999px;
+        background-color: #fcfcfc;
+        position: absolute;
+        bottom: -2px;
+        right: -7px;
+    }
+}
+.detail {
+    &-name {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 10px;
+        font-size: 1.6rem;
+    }
+    &-desc {
+        padding: 0 10px 20px;
+        font-size: 1.8rem;
+    }
+}
+.volume {
+    &-control {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    &-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px;
+        padding-left: 10px;
+    }
+    &-bar {
+        position: relative;
+        width: 70px;
+        height: 12px;
+        border-radius: 999px;
+        background-color: rgb(77, 77, 77);
+    }
+    &-line {
+        width: 80%;
+        position: absolute;
+        left: 50%;
+        bottom: 50%;
+        translate: -50% 50%;
+        height: 2px;
+        border-radius: 999px;
+        background: transparent;
+    }
+    &-fill {
+        border-radius: 999px;
+        height: 100%;
+        background: #fcfcfc;
+    }
+}

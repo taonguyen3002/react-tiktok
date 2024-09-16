@@ -4,7 +4,7 @@ import styles from './Menu.module.scss';
 import { NavLink } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
-function MenuItem({ to, icon, title, activeIcon, ...passProps }) {
+function MenuItem({ to, icon, title, activeIcon }) {
     return (
         <NavLink to={to} className={(nav) => cx('item', { active: nav.isActive })}>
             {({ isActive }) => (

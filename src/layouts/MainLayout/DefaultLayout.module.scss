@@ -3,15 +3,20 @@
     flex-direction: column;
 }
 .container {
+    max-height: calc(-60px + 100vh);
+
     display: flex;
     width: var(--default-layout-width);
     max-width: 100%;
     margin-top: var(--header-height);
     justify-content: space-between;
-    margin-top: 60px;
     max-width: 100%;
     padding-right: 24px;
 }
 .content {
+    max-height: calc(-60px + 100vh);
+    scrollbar-width: none;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
     flex: 1;
 }

@@ -1,9 +1,9 @@
 import { forwardRef, useState } from 'react';
 import classNames from 'classnames';
-import style from './Image.module.scss';
 import image from '../../assets/image';
+import styles from './Image.module.scss';
 import PropTypes from 'prop-types';
-const Image = forwardRef(({ src, alt, className, fallBack: customFB = image.user, ...props }, ref) => {
+const Image = forwardRef(({ src, alt, style, className, fallBack: customFB = image.user, ...props }, ref) => {
     const [fallBack, setFallBack] = useState('');
     const handleErr = () => {
         setFallBack(customFB);
@@ -12,9 +12,10 @@ const Image = forwardRef(({ src, alt, className, fallBack: customFB = image.user
         <img
             ref={ref}
             alt={alt}
+            style={style}
             src={fallBack || src}
             onError={handleErr}
-            className={classNames(style.wrapper, className)}
+            className={classNames(styles.wrapper, className)}
             {...props}
         />
     );

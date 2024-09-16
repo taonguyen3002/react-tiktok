@@ -71,8 +71,8 @@ export const IconHome = ({
     </svg>
 );
 // icon friend arrow
-export const IconFriendArrow = ({ width = '2.4rem', height = '2.4rem', className }) => (
-    <div className={className}>
+export const IconFriendArrow = ({ width = '2.4rem', height = '2.4rem' }) => (
+    <div style={{ width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <svg
             width={width}
             data-e2e=""
@@ -167,6 +167,207 @@ export const IconRecord = ({
         <path fillRule="evenodd" clipRule="evenodd" d={d[3]}></path>
     </svg>
 );
+// love icon
+export const IconLove = ({
+    size = '2.4rem',
+    sizeWrap = '4.8rem',
+    background = 'rgb(241 241 242)',
+    borderRadius = '999px',
+    color = 'rgb(22 24 35)',
+    ...passProps
+}) => (
+    <span
+        style={{
+            width: sizeWrap,
+            height: sizeWrap,
+            background,
+            color,
+            borderRadius,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            ...passProps,
+        }}
+    >
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+                <path
+                    d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"
+                    fill={color}
+                ></path>
+            </g>
+        </svg>
+    </span>
+);
+export const IconComment = ({
+    size = '2.4rem',
+    sizeWrap = '4.8rem',
+    background = 'rgb(241 241 242)',
+    borderRadius = '999px',
+    color = 'rgb(22 24 35)',
+    ...passProps
+}) => (
+    <span
+        style={{
+            width: sizeWrap,
+            height: sizeWrap,
+            background,
+            color,
+            borderRadius,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            ...passProps,
+        }}
+    >
+        <svg
+            width={size}
+            height={size}
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            enableBackground="new 0 0 24 24"
+        >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M12,2C6.5,2,2,6.5,2,12c0,2.3,0.8,4.5,2.3,6.3l-2,2c-0.4,0.4-0.4,1,0,1.4C2.5,21.9,2.7,22,3,22h9c5.5,0,10-4.5,10-10S17.5,2,12,2z M8,13c-0.6,0-1-0.4-1-1s0.4-1,1-1s1,0.4,1,1S8.6,13,8,13z M12,13c-0.6,0-1-0.4-1-1s0.4-1,1-1s1,0.4,1,1S12.6,13,12,13z M16,13c-0.6,0-1-0.4-1-1s0.4-1,1-1s1,0.4,1,1S16.6,13,16,13z"></path>
+            </g>
+        </svg>
+    </span>
+);
+// icon label
+export const IconLabel = ({
+    size = '2.4rem',
+    sizeWrap = '4.8rem',
+    background = 'rgb(241 241 242)',
+    borderRadius = '999px',
+    color = 'rgb(22 24 35)',
+    ...passProps
+}) => (
+    <span
+        style={{
+            width: sizeWrap,
+            height: sizeWrap,
+            background,
+            color,
+            borderRadius,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            ...passProps,
+        }}
+    >
+        <svg
+            fill="currentColor"
+            height={size}
+            width={size}
+            version="1.1"
+            id="Capa_1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 295.989 295.989"
+            xmlSpace="preserve"
+        >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M224.312,0H71.677c-11.046,0-20,8.954-20,20v255.988c0,7.971,4.733,15.181,12.047,18.351 c7.312,3.169,15.811,1.695,21.627-3.756l62.644-58.69l62.644,58.69c3.78,3.543,8.693,5.406,13.678,5.405 c2.685,0,5.39-0.54,7.949-1.649c7.313-3.17,12.047-10.38,12.047-18.351V20C244.312,8.954,235.358,0,224.312,0z"></path>
+            </g>
+        </svg>
+    </span>
+);
+// icon arrow share
+export const IconArrow = ({
+    size = '2.4rem',
+    sizeWrap = '4.8rem',
+    background = 'rgb(241 241 242)',
+    borderRadius = '999px',
+    color = 'rgb(22 24 35)',
+    ...passProps
+}) => (
+    <span
+        style={{
+            width: sizeWrap,
+            height: sizeWrap,
+            background,
+            color,
+            borderRadius,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            ...passProps,
+        }}
+    >
+        <svg
+            height={size}
+            width={size}
+            version="1.1"
+            id="_x32_"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 512 512"
+            xmlSpace="preserve"
+            fill="currentColor"
+        >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+                <g>
+                    <path
+                        className="st0"
+                        d="M512,230.431L283.498,44.621v94.807C60.776,141.244-21.842,307.324,4.826,467.379 c48.696-99.493,149.915-138.677,278.672-143.14v92.003L512,230.431z"
+                    ></path>
+                </g>
+            </g>
+        </svg>
+    </span>
+);
+// three dots
+export const IconThreeDot = ({
+    size = '2.4rem',
+    sizeWrap = '4.8rem',
+    background = 'rgb(241 241 242)',
+    borderRadius = '999px',
+    color = 'rgb(22 24 35)',
+    ...passProps
+}) => (
+    <span
+        style={{
+            width: sizeWrap,
+            height: sizeWrap,
+            background,
+            color,
+            borderRadius,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            ...passProps,
+        }}
+    >
+        <svg
+            fill="currentColor"
+            height={size}
+            width={size}
+            id="Layer_1"
+            dataname="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+        >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+                <path
+                    className="cls-1"
+                    d="M8,6.5A1.5,1.5,0,1,1,6.5,8,1.5,1.5,0,0,1,8,6.5ZM.5,8A1.5,1.5,0,1,0,2,6.5,1.5,1.5,0,0,0,.5,8Zm12,0A1.5,1.5,0,1,0,14,6.5,1.5,1.5,0,0,0,12.5,8Z"
+                ></path>
+            </g>
+        </svg>
+    </span>
+);
+
 // Path Icon active
 export const iconActivePath = {
     home: {

@@ -1,0 +1,48 @@
+.wrapper {
+    display: flex;
+    align-self: flex-end;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 48px;
+}
+
+.avatar-group {
+    flex: 0 1;
+    display: inline-block;
+    position: relative;
+}
+.follow-btn {
+    border: 1px solid transparent;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(254, 44, 85, 1);
+    color: rgba(255, 255, 255, 1);
+    border-radius: 999px;
+    position: absolute;
+    bottom: 0;
+    height: 24px;
+    left: 50%;
+    translate: -50% 50%;
+}
+.follow-icon {
+    padding: 5px;
+}
+.like-btn {
+    color: red !important;
+    margin-left: -8px;
+}
+.like-btn__group {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 5px;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    + .like-btn__group {
+        margin-left: 0;
+    }
+}

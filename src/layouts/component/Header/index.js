@@ -1,16 +1,10 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import style from './Header.module.scss';
 import classNames from 'classnames/bind';
 
-import { FaLanguage, FaRegLightbulb, FaRegUser } from 'react-icons/fa6';
-import { TbHomeEdit } from 'react-icons/tb';
-import { FiLogOut, FiMoreVertical } from 'react-icons/fi';
-import { MdFeedback } from 'react-icons/md';
-import { CiDark } from 'react-icons/ci';
-import { IoSettingsOutline } from 'react-icons/io5';
-
+import { FiMoreVertical } from 'react-icons/fi';
 import { IconInbox, IconMessage, IconPlus } from '../../../component/Icons';
 import Search from '../Search';
 import image from '../../../assets/image';
@@ -19,92 +13,32 @@ import Menu from '../../../component/Popper/Menu';
 import Image from '../../../component/Images';
 import { Link } from 'react-router-dom';
 import configs from '../../../configs';
+import { menuItemHeader, userMenuHeader } from '../../../constant';
+import { token } from '../../../constant';
 
 const cx = classNames.bind(style);
 
-const MENU_ITEMS = [
-    {
-        icon: <TbHomeEdit />,
-        title: 'Creater tools',
-        children: {
-            title: 'Creator tool',
-            data: [
-                {
-                    icon: <FaRegLightbulb />,
-                    title: 'Live Creator Hub',
-                    to: '/creatorlive',
-                },
-            ],
-        },
-    },
-    {
-        icon: <FaLanguage />,
-        title: 'English',
-        children: {
-            title: 'Language',
-            data: [
-                {
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                    type: 'language',
-                },
-                {
-                    code: 'en',
-                    title: 'English',
-                    type: 'language',
-                },
-            ],
-        },
-    },
-    { icon: <MdFeedback />, title: 'Feedback and helps', to: '/feedback' },
-    {
-        icon: <CiDark />,
-        title: 'Dark mode',
-        children: {
-            title: 'Dark Mode',
-            data: [
-                {
-                    title: 'Use devide thame',
-                    code: 'devideThame',
-                    type: 'thame',
-                },
-                {
-                    title: 'Light mode',
-                    code: 'lightThame',
-                    type: 'thame',
-                },
-                {
-                    title: 'Dark mode',
-                    code: 'darkThame',
-                    type: 'thame',
-                },
-            ],
-        },
-    },
-];
 const handdleMenuChange = (dataChange) => {
     console.log(dataChange);
 };
 function Header() {
     const currentuser = true;
-    const userMenu = [
-        {
-            icon: <FaRegUser />,
-            title: 'View profile',
-            to: '/profile',
-        },
-        {
-            icon: <IoSettingsOutline />,
-            title: 'Setting',
-            to: '/setting',
-        },
-        ...MENU_ITEMS,
-        {
-            icon: <FiLogOut />,
-            title: 'Log out',
-            separate: true,
-        },
-    ];
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        const fetchUser = async () => {
+            const res = await fetch('https://tiktok.fullstack.edu.vn/api/auth/me', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            const resConvert = await res.json();
+            const result = await resConvert.data;
+            setData(result);
+        };
+        fetchUser();
+    }, []);
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -144,11 +78,11 @@ function Header() {
                     ) : (
                         <Button primary>Log in</Button>
                     )}
-                    <Menu items={currentuser ? userMenu : MENU_ITEMS} onChange={handdleMenuChange}>
+                    <Menu items={currentuser ? userMenuHeader : menuItemHeader} onChange={handdleMenuChange}>
                         {currentuser ? (
                             <Image
-                                src="https://cdn-media.sforum.vn/storage/app/media/wp-content/uploads/2023/11/avatar-vo-tri-thumbnail.jpg"
-                                alt="nguyen van A"
+                                src={data.avatar}
+                                alt={`${data.first_name} ${data.last_name}`}
                                 className={cx('avatar')}
                             />
                         ) : (

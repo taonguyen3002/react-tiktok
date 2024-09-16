@@ -54,6 +54,6 @@ Button.propTypes = {
     rightIcon: PropTypes.node,
     className: PropTypes.string,
     onClick: PropTypes.func,
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node,
 };
 export default Button;

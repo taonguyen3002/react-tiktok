@@ -1,63 +1,41 @@
 import classNames from 'classnames/bind';
 import style from './Sidebar.module.scss';
+import { useEffect, useState } from 'react';
 import Menu, { MenuItem } from './Menu';
 import Image from '../../../component/Images';
 import configs from '../../../configs';
-import {
-    IconCompass,
-    IconFriendArrow,
-    IconFriendGroup,
-    IconHome,
-    IconRecord,
-    iconActivePath,
-} from '../../../component/Icons';
+import * as userSevice from '../../../sevices/userSevice';
 import SuggestAccount from '../../../component/SuggestAccounts/SuggestAccounts';
+import { MenuItemSidebar } from '../../../constant';
+const INIT_PAGE = 1;
+const PER_PAGE = 5;
+const cx = classNames.bind(style);
 
 function Sidebar() {
-    const cx = classNames.bind(style);
+    const [page, setPage] = useState(INIT_PAGE);
+    const [userSuggest, setUserSuggest] = useState([]);
+    useEffect(() => {
+        userSevice
+            .suggest({ page, perPage: PER_PAGE })
+            .then((data) => setUserSuggest((pre) => [...pre, ...data]))
+            .catch((error) => console.log(error));
+    }, [page]);
 
+    const handleSeeMore = () => {
+        setPage(page + 1);
+    };
     return (
         <aside className={cx('wrapper')}>
             <Menu>
-                <MenuItem
-                    to={configs.routes.root}
-                    title={'For You'}
-                    icon={<IconHome className={cx('icon')} />}
-                    activeIcon={<IconHome d={Object.values(iconActivePath.home)} className={cx('icon')} />}
-                />
-                <MenuItem
-                    to={configs.routes.explore}
-                    title={'Explore'}
-                    icon={<IconCompass className={cx('icon')} />}
-                    activeIcon={<IconCompass d={Object.values(iconActivePath.compass)} className={cx('icon')} />}
-                />
-                <MenuItem
-                    to={configs.routes.following}
-                    title={'Following'}
-                    icon={<IconFriendArrow className={cx('icon')} />}
-                    activeIcon={<IconFriendArrow className={cx('icon')} />}
-                />
-                <MenuItem
-                    to={configs.routes.friends}
-                    title={'Friend'}
-                    icon={<IconFriendGroup className={cx('icon')} />}
-                    activeIcon={
-                        <IconFriendGroup d={Object.values(iconActivePath.friendGroup)} className={cx('icon')} />
-                    }
-                />
-                <MenuItem
-                    to={configs.routes.live}
-                    title={'Live'}
-                    icon={<IconRecord className={cx('icon')} />}
-                    activeIcon={
-                        <IconRecord
-                            d={Object.values(iconActivePath.record)}
-                            viewBox="0 0 48 48"
-                            pathFill="white"
-                            className={cx('icon')}
-                        />
-                    }
-                />
+                {MenuItemSidebar.map((item) => (
+                    <MenuItem
+                        key={item.id}
+                        to={item.path}
+                        title={item.title}
+                        icon={item.icon}
+                        activeIcon={item.activeIcon}
+                    />
+                ))}
                 <MenuItem
                     to={configs.routes.profile}
                     title={'Profile'}
@@ -77,7 +55,7 @@ function Sidebar() {
                     }
                 />
             </Menu>
-            <SuggestAccount label="Suggested for you" />
+            <SuggestAccount label="Suggested for you" data={userSuggest} onSeeMore={handleSeeMore} />
         </aside>
     );
 }

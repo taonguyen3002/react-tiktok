@@ -1,14 +1,9 @@
 .wrapper {
+    max-height: calc(-60px + 100vh);
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
     width: 224px;
     padding: 20px 0 26px 8px;
-}
-.icon {
-    margin-right: 8px;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 .avatar {
     border: 1px solid var(--text-color);
@@ -17,5 +12,4 @@
     object-fit: cover;
     border-radius: 999px;
     cursor: pointer;
-    margin-right: 8px;
 }
