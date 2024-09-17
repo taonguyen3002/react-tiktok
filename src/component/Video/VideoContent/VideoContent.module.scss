@@ -26,16 +26,7 @@
     position: relative;
     background: #fcfcfc;
     height: 100%;
-    &::before {
-        content: '';
-        width: 14px;
-        height: 14px;
-        border-radius: 999px;
-        background-color: #fcfcfc;
-        position: absolute;
-        bottom: -2px;
-        right: -7px;
-    }
+    border-radius: 999px;
 }
 .detail {
     &-name {

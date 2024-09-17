@@ -2,11 +2,12 @@ import * as request from '../untils/httpRequest';
 
 export const video = async ({ type, page }) => {
     try {
-        const res = request.get('videos', {
+        const res = await request.get('videos', {
             params: {
                 type,
                 page,
             },
+            method: 'get',
         });
         return res.data;
     } catch (error) {

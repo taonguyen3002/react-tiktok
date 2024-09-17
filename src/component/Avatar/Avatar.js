@@ -4,10 +4,10 @@ import styles from './Avatar.module.scss';
 import Image from '../../component/Images';
 
 const cx = classNames.bind(styles);
-function Avatar({ to, src, alt, width, height, borderRadius }) {
+function Avatar({ to, src, alt, width, height, borderRadius, ...passStyle }) {
     return (
         <Link to={to}>
-            <Image src={src} alt={alt} style={{ width, height, borderRadius }} className={cx('avatar')} />
+            <Image src={src} alt={alt} style={{ width, height, borderRadius, ...passStyle }} className={cx('avatar')} />
         </Link>
     );
 }

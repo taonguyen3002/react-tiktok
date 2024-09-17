@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment } from 'react';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import style from './Header.module.scss';
@@ -14,31 +14,14 @@ import Image from '../../../component/Images';
 import { Link } from 'react-router-dom';
 import configs from '../../../configs';
 import { menuItemHeader, userMenuHeader } from '../../../constant';
-import { token } from '../../../constant';
 
 const cx = classNames.bind(style);
 
 const handdleMenuChange = (dataChange) => {
     console.log(dataChange);
 };
-function Header() {
+function Header({ currentUser }) {
     const currentuser = true;
-    const [data, setData] = useState([]);
-    useEffect(() => {
-        const fetchUser = async () => {
-            const res = await fetch('https://tiktok.fullstack.edu.vn/api/auth/me', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            const resConvert = await res.json();
-            const result = await resConvert.data;
-            setData(result);
-        };
-        fetchUser();
-    }, []);
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -81,8 +64,8 @@ function Header() {
                     <Menu items={currentuser ? userMenuHeader : menuItemHeader} onChange={handdleMenuChange}>
                         {currentuser ? (
                             <Image
-                                src={data.avatar}
-                                alt={`${data.first_name} ${data.last_name}`}
+                                src={currentUser.avatar}
+                                alt={`${currentUser.first_name} ${currentUser.last_name}`}
                                 className={cx('avatar')}
                             />
                         ) : (

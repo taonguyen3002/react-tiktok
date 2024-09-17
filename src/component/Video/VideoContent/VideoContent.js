@@ -1,10 +1,10 @@
 import classNames from 'classnames/bind';
 import styles from './VideoContent.module.scss';
-import { useEffect, useRef, useState } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
 const cx = classNames.bind(styles);
 
-function VideoContent({ width = '304px', height = '541px', datas }) {
+const VideoContent = forwardRef(({ width = '304px', height = '541px', datas }, parentRef) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isMuted, setIsMute] = useState(true);
     const [progress, setProgress] = useState(0);
@@ -14,6 +14,22 @@ function VideoContent({ width = '304px', height = '541px', datas }) {
     const videoRef = useRef(null);
     const videoProgress = useRef(null);
     const volumeBarRef = useRef(null);
+
+    useImperativeHandle(parentRef, () => ({
+        play: () => {
+            if (videoRef.current) {
+                videoRef.current.play();
+                setIsPlaying(true);
+            }
+        },
+        pause: () => {
+            if (videoRef.current) {
+                videoRef.current.pause();
+                setIsPlaying(false);
+            }
+        },
+        current: videoRef.current,
+    }));
 
     const handleTimeUpdate = () => {
         const currentTime = videoRef.current.currentTime;
@@ -162,6 +178,6 @@ function VideoContent({ width = '304px', height = '541px', datas }) {
             </div>
         </section>
     );
-}
+});
 
 export default VideoContent;

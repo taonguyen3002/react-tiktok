@@ -8,7 +8,7 @@ function Home() {
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('video-list')}>
-                    <Video />
+                    <Video initPage={1} />
                 </div>
             </div>
         </div>

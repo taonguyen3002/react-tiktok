@@ -4,13 +4,13 @@ import style from './DefaultLayout.module.scss';
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 
-function MainLayout({ children }) {
+function MainLayout({ children, currentUser }) {
     const cx = classNames.bind(style);
     return (
         <div className={cx('wrapper')}>
-            <Header />
+            <Header currentUser={currentUser} />
             <div className={cx('container')}>
-                <Sidebar />
+                <Sidebar currentUser={currentUser} />
                 <div className={cx('content')}>{children}</div>
             </div>
         </div>

@@ -3,6 +3,7 @@ import { IconArrow, IconComment, IconLabel, IconLove, IconPlus, IconThreeDot } f
 import Button from '../../Button';
 import classNames from 'classnames/bind';
 import styles from './VideoOptions.module.scss';
+import config from '../../../configs';
 
 const cx = classNames.bind(styles);
 function VideoOptions({ datas }) {
@@ -10,6 +11,7 @@ function VideoOptions({ datas }) {
         <section className={cx('wrapper')}>
             <div className={cx('avatar-group')}>
                 <Avatar
+                    to={`/@${datas.user.nickname}`}
                     src={datas.user.avatar}
                     alt={`${datas.user.first_name} ${datas.user.last_name}`}
                     width={'48px'}

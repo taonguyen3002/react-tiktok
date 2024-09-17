@@ -1,8 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { publicRouter } from './routers';
 import MainLayout from './layouts';
+import * as useSevice from './sevices/currentUserSevice';
 function App() {
+    const [currentUser, setCurrentUser] = useState([]);
+    useEffect(() => {
+        useSevice.currentUser().then((res) => {
+            setCurrentUser(res);
+        });
+    }, []);
     return (
         <Router>
             <div className="App">
@@ -20,7 +27,7 @@ function App() {
                                 key={index}
                                 path={route.path}
                                 element={
-                                    <Layout>
+                                    <Layout currentUser={currentUser}>
                                         <Page />
                                     </Layout>
                                 }

@@ -11,7 +11,7 @@ const INIT_PAGE = 1;
 const PER_PAGE = 5;
 const cx = classNames.bind(style);
 
-function Sidebar() {
+function Sidebar({ currentUser }) {
     const [page, setPage] = useState(INIT_PAGE);
     const [userSuggest, setUserSuggest] = useState([]);
     useEffect(() => {
@@ -37,19 +37,19 @@ function Sidebar() {
                     />
                 ))}
                 <MenuItem
-                    to={configs.routes.profile}
+                    to={`/@${currentUser.nickname}`}
                     title={'Profile'}
                     icon={
                         <Image
-                            src="https://cdn-media.sforum.vn/storage/app/media/wp-content/uploads/2023/11/avatar-vo-tri-thumbnail.jpg"
-                            alt="nguyen van A"
+                            src={currentUser.avatar}
+                            alt={`${currentUser.first_name} ${currentUser.last_name}`}
                             className={cx('avatar')}
                         />
                     }
                     activeIcon={
                         <Image
-                            src="https://cdn-media.sforum.vn/storage/app/media/wp-content/uploads/2023/11/avatar-vo-tri-thumbnail.jpg"
-                            alt="nguyen van A"
+                            src={currentUser.avatar}
+                            alt={`${currentUser.first_name} ${currentUser.last_name}`}
                             className={cx('avatar')}
                         />
                     }
